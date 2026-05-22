@@ -1,0 +1,28 @@
+[
+    {
+        "model": "data_element.datatype",
+        "pk": 1,
+        "fields": {
+            "name": "String",
+            "description": "Text string data type"
+        }
+    },
+    {
+        "model": "data_element.mappingsource",
+        "pk": 2,
+        "fields": {
+            "name": "DHIS2",
+            "description": "District Health Information System 2",
+            "url": "https://dhisanalytics.moh.gov.et"
+        }
+    },
+    {
+        "model": "data_element.dataelementclass",
+        "pk": 1,
+        "fields": {
+            "name": "DHIS2 Imported",
+            "description": "Data elements imported from DHIS2",
+            "status": "active"
+        }
+    }
+]

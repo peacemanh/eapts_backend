@@ -1,0 +1,106 @@
+{
+    "pmt_logbook_training": {
+        "intro": "Welcome. This is the PMT logbook system demonstration.",
+        "steps": [
+            {
+                "action": "goto",
+                "url": "/login"
+            },
+            {
+                "action": "type",
+                "selector": "[data-testid=\"login-username\"]",
+                "label": "username",
+                "env": "USERNAME"
+            },
+            {
+                "action": "type",
+                "selector": "[data-testid=\"login-password\"]",
+                "label": "password",
+                "env": "PASSWORD"
+            },
+            {
+                "action": "click",
+                "selector": "[data-testid=\"login-submit\"]",
+                "narration": "Click login"
+            },
+            {
+                "action": "wait_network_idle"
+            },
+            {
+                "action": "click",
+                "selector": "[data-testid=\"location-item-8\"]",
+                "narration": "Select location"
+            },
+            {
+                "action": "click",
+                "selector": "[data-testid=\"complete-login-button\"]",
+                "narration": "Complete login"
+            },
+            {
+                "action": "click",
+                "selector": "[data-testid=\"pmt-log-books-module\"]",
+                "narration": "Open PMT log books module"
+            },
+            {
+                "action": "click_first",
+                "selector": "div[data-testid^=\"logbook-\"]",
+                "narration": "Open the first logbook"
+            },
+            {
+                "action": "select_department",
+                "rowIndex": 0,
+                "value": "Laboratory",
+                "narration": "Select department OPD"
+            },
+            {
+                "action": "type",
+                "selector": "[data-testid=\"field-0-number_of_expected_data_element\"]",
+                "value": "12",
+                "narration": "Enter expected count 12"
+            },
+            {
+                "action": "type",
+                "selector": "[data-testid=\"field-0-number_of_data_element_completed\"]",
+                "value": "10",
+                "narration": "Enter completed count 10"
+            },
+            {
+                "action": "click",
+                "selector": "[data-testid=\"add-row-button\"]",
+                "narration": "Click add row"
+            },
+            {
+                "action": "wait",
+                "timeout": 2000,
+                "narration": "Waiting for row to load"
+            },
+            {
+                "action": "select_department",
+                "rowIndex": 1,
+                "value": "Medical OPD",
+                "narration": "Select department"
+            },
+            {
+                "action": "type",
+                "selector": "[data-testid=\"field-1-number_of_expected_data_element\"]",
+                "value": "15",
+                "narration": "Enter expected count 15"
+            },
+            {
+                "action": "type",
+                "selector": "[data-testid=\"field-1-number_of_data_element_completed\"]",
+                "value": "14",
+                "narration": "Enter completed count 14"
+            },
+            {
+                "action": "click",
+                "selector": "[data-testid=\"save-all-button\"]",
+                "narration": "Save all changes"
+            },
+            {
+                "action": "wait_network_idle"
+            }
+        ],
+        "outro": "The demonstration is complete. Thank you."
+    }
+}

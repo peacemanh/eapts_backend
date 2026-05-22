@@ -1,0 +1,80 @@
+@startuml
+!theme plain
+hide circle
+hide methods
+hide stereotypes
+skinparam linetype ortho
+
+' -------------------------------
+' Core Metadata Tables
+' -------------------------------
+entity "data_element_class" as data_element_class {
+  *id : BIGINT <<PK>>
+  --
+  name : VARCHAR(255)
+  description : TEXT
+  status : VARCHAR(20)
+}
+
+entity "data_type" as data_type {
+  *id : BIGINT <<PK>>
+  --
+  name : VARCHAR(100)
+  description : TEXT
+}
+
+entity "mapping_source" as mapping_source {
+  *id : BIGINT <<PK>>
+  --
+  name : VARCHAR(100)
+  description : TEXT
+  url : VARCHAR(255)
+}
+
+entity "data_element" as data_element {
+  *id : BIGINT <<PK>>
+  --
+  uuid : VARCHAR(64)
+  name : VARCHAR(255)
+  label : VARCHAR(255)
+  class_id : BIGINT <<FK>>
+  datatype_id : BIGINT <<FK>>
+  unit : VARCHAR(50)
+  length : INT
+  default_value : VARCHAR(255)
+  required : BOOLEAN
+  multi_value : BOOLEAN
+  normal_min_value : DECIMAL(15,2)
+  normal_max_value : DECIMAL(15,2)
+  parent_id : BIGINT <<FK>> ' hierarchical self-reference
+  description : TEXT
+  status : VARCHAR(20)
+  source_id : BIGINT <<FK>>
+  sort_weight : INT
+  created_date : TIMESTAMP
+  updated_date : TIMESTAMP
+}
+
+' -------------------------------
+' Data Element Value Set (Coded Answers)
+' -------------------------------
+entity "data_element_value_set" as data_element_value_set {
+  *id : BIGINT <<PK>>
+  --
+  parent_element_id : BIGINT <<FK>> ' coded data element
+  answer_element_id : BIGINT <<FK>> ' possible answer (also a data_element)
+}
+
+' ===========================
+' Relationships
+' ===========================
+data_element::class_id }o--|| data_element_class::id
+data_element::datatype_id }o--|| data_type::id
+data_element::source_id }o--|| mapping_source::id
+data_element::parent_id }o--|| data_element::id
+
+' Many-to-many via data_element_value_set
+data_element_value_set::parent_element_id }o--|| data_element::id
+data_element_value_set::answer_element_id }o--|| data_element::id
+
+@enduml

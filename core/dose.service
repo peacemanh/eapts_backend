@@ -1,0 +1,14 @@
+[Unit]
+Description=Health Dose backend Service
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/h_dose/eapts_backend
+ExecStart=/opt/h_dose/eapts_backend/core/start.sh
+Restart=always
+RestartSec=5
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+
+[Install]
+WantedBy=multi-user.target
